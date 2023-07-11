@@ -7,11 +7,8 @@ async function getLivros() {
     const response = await fetch(endpointAPI);
     livros = await response.json();
 
-    console.table(livros);
     renderLivros(livros);
-
 }
-
 
 // Metodo forEach() para percorrer o array de livros e renderizar na tela
 estanteLivros = document.querySelector('#livros');
@@ -59,15 +56,12 @@ filtroCategoria.forEach(btn => btn.addEventListener('click', filtrarLivros));
 
 function filtrarLivros() {
     const categoria = this.value;
-    console.log(categoria);
 
     let livrosFiltrados = categoria == 'disponivel' ? livros.filter(livro => livro.quantidade > 0) : livros.filter(livro => livro.categoria == categoria);
-    console.table(livrosFiltrados);
     renderLivros(livrosFiltrados);
 
     if (categoria == 'disponivel') {
         const valorTotal = livrosFiltrados.reduce((total, livro) => total + livro.preco, 0).toFixed(2);
-        console.log(valorTotal);
         elementoValorTotal.innerHTML = `
         <div class="livros__disponiveis">
             <p>Todos os livros disponíveis por R$ <span id="valor">${valorTotal}</span></p>
@@ -75,8 +69,6 @@ function filtrarLivros() {
     `;
     }
 };
-
-
 
 // Metodo sort() para ordenar os livros por preço
 const ordenarLivros = document.querySelector('#btnOrdenarPorPreco');
