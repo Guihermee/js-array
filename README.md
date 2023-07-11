@@ -8,7 +8,7 @@ Treinamento para os estudar os métodos de array
 - reduce
 - filter
 
-Ainda fiz um desafio:
+### Ainda fiz um desafio para se a palavra é um palíndromo ou não :P
 ```
 function palavraPalindromo(palavra) {
     separar = palavra.split("");
